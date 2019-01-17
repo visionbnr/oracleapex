@@ -1,0 +1,9 @@
+public void applyEmpRise (Number rise)
+{
+ RowSet emp=(RowSet)getEmployeesView();
+ while (emp.hasNext())
+ {
+    EmployeesViewRowImpl currentRow=(EmployeesViewRowImpl)emp.next();
+    currentRow.setSalary(currentRow.getSalary().add(rise));
+ }
+}
