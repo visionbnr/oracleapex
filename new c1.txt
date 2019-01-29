@@ -1,0 +1,60 @@
+<f:facet name="centerHeader">
+          <af:panelGroupLayout layout="vertical" id="pgl3">
+            <af:outputFormatted value="&lt;b>Panel Collection&lt;/b>" id="of1"/>
+            <af:spacer height="5px" id="s1"/>
+          </af:panelGroupLayout>
+        </f:facet>
+
+<af:panelCollection binding="#{editor.component}" id="panelCollection1">
+            <f:facet name="menus">
+              <af:menu text="Actions" id="m1" shortDesc="Actions">
+                <af:commandMenuItem text="Add..." id="cmi1"/>
+                <af:commandMenuItem text="Create.." id="cmi2"/>
+                <af:commandMenuItem text="Edit..." disabled="true" id="cmi3"/>
+                <af:commandMenuItem text="Copy" id="cmi4"/>
+                <!-- todo: add af:group -->
+                <af:commandMenuItem text="Delete" id="cmi5"/>
+                <af:commandMenuItem text="Remove" accelerator="control A" id="cmi6"/>
+                <af:commandMenuItem text="Preferences" id="cmi7"/>
+              </af:menu>
+            </f:facet>
+            <f:facet name="toolbar">
+              <af:toolbar id="t1">
+                <af:commandToolbarButton shortDesc="Create" icon="/images/new_ena.png"
+                                         id="ctb1"></af:commandToolbarButton>
+                <af:commandToolbarButton shortDesc="Edit" icon="/images/update_ena.png"
+                                         id="ctb2"></af:commandToolbarButton>
+                <af:commandToolbarButton shortDesc="Delete" icon="/images/delete_ena.png"
+                                         id="ctb3"></af:commandToolbarButton>
+              </af:toolbar>
+            </f:facet>
+ <f:facet name="secondaryToolbar">
+              <af:toolbar id="t2">
+                <af:commandToolbarButton immediate="true" text="TagGuide" action="guide"
+                                         id="ctb4"/>
+                <af:commandButton immediate="true" text="Refresh" id="cb8"/>
+                <af:commandButton immediate="true" text="Test Dialog in PanelCollection" id="cb1">
+                <af:showPopupBehavior popupId="popupDialog"/>
+              </af:commandButton>
+              </af:toolbar>
+            </f:facet>
+            <f:facet name="afterToolbar">
+              <af:menuBar id="mb1">
+                <af:goMenuItem text="Tag Documentation"
+                               destination="/docs/tagdoc/af_panelCollection.html"
+                               id="gmi1"/>
+                <af:goMenuItem text="view page source"
+                               destination="#{facesContext.viewRoot.viewId}.source"
+                               id="gmi2"/>
+              </af:menuBar>
+            </f:facet>
+
+              <af:column displayIndex="1" sortProperty="name" headerText="Name"
+                         sortable="true" align="left" id="c3">
+                <af:panelGroupLayout id="pgl1">
+                  <af:image source="#{test1.icon}" inlineStyle="width:16px; height:14px;"
+                            shortDesc="icon" id="i1"/>
+                  <af:outputText inlineStyle="margin-left:8px" value="#{test1.name}"
+                                 id="ot3"/>
+                </af:panelGroupLayout>
+              </af:column>			
