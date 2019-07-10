@@ -1,0 +1,69 @@
+Hi Heisman,
+
+in the valueChangeListener  method add the below line.
+
+valueChangeEvent.getComponent().processUpdates(FacesContext.getCurrentInstance());
+
+ 
+
+public void selectAllCheckbox(ValueChangeEvent valueChangeEvent) {
+
+      valueChangeEvent.getComponent().processUpdates(FacesContext.getCurrentInstance());//add this line and check
+
+        // Add event code here...
+
+        System.out.println("xdebug c1 : In selectAllChoiceBoxLN with value = "+
+
+        valueChangeEvent.getNewValue());
+
+        boolean isSelected = ((Boolean)valueChangeEvent.getNewValue()).booleanValue();
+
+            BindingContext bindingctx = BindingContext.getCurrent();
+
+            BindingContainer binding = bindingctx.getCurrentBindingsEntry();
+
+            DCIteratorBinding it =
+
+                (DCIteratorBinding)binding.get("SearchVO1Iterator");
+
+            ViewObject vo = it.getViewObject();      
+
+        int i = 0;
+
+        Row row = null;
+
+        //vo.executeQuery();
+
+        System.out.println("Execute Query");
+
+        System.out.println("VO"+vo.hasNext());
+
+        while (vo.hasNext()) {
+
+        if (i == 0)
+
+        row = vo.first();
+
+        else
+
+        row = vo.next();
+
+        System.out.println("xdebug c2: Changing row 2: " +
+
+        row.getAttribute("Checkbox"));
+
+        if(isSelected)
+
+        row.setAttribute("Checkbox", "Y");
+
+        else
+
+        row.setAttribute("Checkbox", "N");
+
+        i++;
+
+        }
+
+    }
+
+}
